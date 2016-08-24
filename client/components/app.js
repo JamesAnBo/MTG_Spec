@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import actionCreators from '../action-creators/action'
+import Inventory from './Inventory'
 const _ = require('lodash')
 
 const CardButton = (props) => {
@@ -12,7 +13,6 @@ const CardButton = (props) => {
     >{card.name}</button>
   )
 }
-
 
 class App extends React.Component {
   constructor(props) {
@@ -39,6 +39,7 @@ class App extends React.Component {
         </div>
         <h2>Your current bank is</h2>
         {this.props.bank}
+        <Inventory {...this.props} />
       </div>
     )
   }
