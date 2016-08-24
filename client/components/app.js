@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import actionCreators from '../action-creators/action'
 import Inventory from './Inventory'
+import CardShop from './cardShop'
 const _ = require('lodash')
 
 const CardButton = (props) => {

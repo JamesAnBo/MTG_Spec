@@ -1,4 +1,5 @@
 import React from 'react'
+const _ = require('lodash')
 
 class Inventory extends React.Component {
 
@@ -7,7 +8,15 @@ class Inventory extends React.Component {
     return (
       <div>
         <h3>Your current invetory is:</h3>
-        {this.props.inventory}
+        <ul>
+          {
+            _.map(this.props.inventory, (item) => {
+              return(
+              <li>{item}</li>
+              )
+            })
+          }
+        </ul>
       </div>
     )
   }
