@@ -3,12 +3,22 @@ import { connect } from 'react-redux'
 import actionCreators from '../action-creators/action'
 const _ = require('lodash')
 
+const CardButton = (props) => {
+  const {card, clickHandler} = props
+
+  return (
+    <button
+      onClick={ () => { clickHandler(card.name, card.price) }}
+    >{card.name}</button>
+  )
+}
+
 
 class App extends React.Component {
-   constructor(props) {
+  constructor(props) {
     super(props)
-      this.buyClick = this.buyClick.bind(this)
-      this.sellClick = this.sellClick.bind(this)
+    this.buyClick = this.buyClick.bind(this)
+    this.sellClick = this.sellClick.bind(this)
   }
 
   buyClick (cardId, price) {
@@ -20,38 +30,22 @@ class App extends React.Component {
   }
 
   render() {
-    console.log('these are the props inside App:', this.props)
     const { cards } = this.props
-    console.log('These are the cards ', { cards });
     return (
       <div>
         <div>
-          <h1>Buy Cards</h1>
-      {
-        _.map(cards, card => {
-          return (
-            <button
-              key={card.id}
-              onClick={() => this.buyClick(card.name, card.price)}
-            >{card.name}</button>
-          )
-        })
-      }
+          <h2>Buy Cards</h2>
+          {
+            _.map(cards, card => (<CardButton key={card.id} card={card} clickHandler={this.buyClick} />))
+          }
         </div>
         <div>
-          <h1>Sell Cards</h1>
-            {
-            _.map(cards, card => {
-              return (
-                <button
-                  key={card.id}
-                  onClick={() => this.sellClick(card.name, card.price)}
-                    >{card.name}</button>
-                )
-              })
-            }
+          <h2>Sell Cards</h2>
+          {
+            _.map(cards, card => (<CardButton key={card.id} card={card} clickHandler={this.sellClick} />))
+          }
         </div>
-        <h1>Your current bank is</h1>
+        <h2>Your current bank is</h2>
         {this.props.bank}
       </div>
     )
