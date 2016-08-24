@@ -17,16 +17,8 @@ const CardButton = (props) => {
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.buyClick = this.buyClick.bind(this)
-    this.sellClick = this.sellClick.bind(this)
-  }
-
-  buyClick (cardId, price) {
-    this.props.buyCard(cardId, price)
-  }
-
-  sellClick (cardId, price) {
-    this.props.sellCard(cardId, price)
+    this.buyClick = this.props.buyCard.bind(this)
+    this.sellClick = this.props.sellCard.bind(this)
   }
 
   render() {
