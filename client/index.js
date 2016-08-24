@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/app'
+import App from './components/App'
 import domready from 'domready'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
@@ -14,7 +14,7 @@ domready(() => {
   ReactDOM.render(
     <Provider store={store}>
       <App/>
-     </Provider>,
+    </Provider>,
     document.querySelector('#app')
   )
 })

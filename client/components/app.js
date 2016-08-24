@@ -31,9 +31,9 @@ class App extends React.Component {
         _.map(cards, card => {
           return (
             <button
-              onClick={() => {
-                this.buyClick(card.name, card.price)
-              }}>{card.name}</button>
+              key={card.id}
+              onClick={() => this.buyClick(card.name, card.price)}
+            >{card.name}</button>
           )
         })
       }
@@ -44,9 +44,9 @@ class App extends React.Component {
             _.map(cards, card => {
               return (
                 <button
-                  onClick={() => {
-                    this.sellClick(card.name, card.price)
-                  }}>{card.name}</button>
+                  key={card.id}
+                  onClick={() => this.sellClick(card.name, card.price)}
+                    >{card.name}</button>
                 )
               })
             }

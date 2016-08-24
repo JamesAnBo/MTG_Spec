@@ -40,7 +40,6 @@
   "tape": "^4.6.0"
 },
 "devDependencies": {
-  "ava": "^0.13.0",
   "babel-plugin-react-transform": "^2.0.2",
   "enzyme": "^2.1.0",
   "garnish": "^5.0.2",
