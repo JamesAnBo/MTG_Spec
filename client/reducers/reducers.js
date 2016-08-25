@@ -2,19 +2,32 @@ const combineReducers = require('redux').combineReducers
 const initialState = require('../state/initialstate')
 
 const cardsReducer = (state, action) => {
+  const newState = Object.assign([], state)
+  switch (action.type) {
+    case 'BUY_CARD':
+      console.log('This is the action payload ', action.payload);
+      newState.inInventory = true
+      console.log('This is the new state in cardsReducer ',newState);
+      return newState
+    case 'SELL_CARD':
+      if (newState.inInventory) {
+        newState.inInventory = false
+      }
+      return newState
+
+    default:
       return state
+  }
 }
 
 const inventoryReducer = (state, action) => {
+  const newState = Object.assign([], state)
 
   switch (action.type) {
     case 'BUY_CARD':
       return [...state, action.payload.cardId]
     case 'SELL_CARD' :
-      const newState = Object.assign([], state)
-      console.log('=====Selling a card=====');
       const itemIndex = state.indexOf(action.payload.cardId)
-      console.log('=====This is the inventory=====', state);
       if (itemIndex != -1){
         newState.splice(itemIndex, 1)
       }

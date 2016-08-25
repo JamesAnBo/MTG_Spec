@@ -29,7 +29,9 @@ class App extends React.Component {
         <div>
           <h2>Buy Cards</h2>
           {
-            _.map(cards, card => (<CardButton key={card.id} card={card} clickHandler={this.buyClick} />))
+            _.map(cards, card => (
+              <CardButton key={card.id} card={card} clickHandler={this.buyClick}>Hello </CardButton>
+            ))
           }
         </div>
         <div>
@@ -50,11 +52,11 @@ module.exports = connect(
   (state) => state,
    (dispatch) => {
       return ({
-        buyCard: (cardId, price) => {
-          dispatch(actionCreators.buyCard(cardId, price))
+        buyCard: (cardId, price, inInventory) => {
+          dispatch(actionCreators.buyCard(cardId, price, inInventory))
         },
-        sellCard: (cardId, price) => {
-          dispatch(actionCreators.sellCard(cardId, price))
+        sellCard: (cardId, price, inInventory) => {
+          dispatch(actionCreators.sellCard(cardId, price, inInventory))
         }
       })
     }
